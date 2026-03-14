@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { MorphingText } from './ui/morphing-text';
 
 // Per-character stagger reveal — animates each letter individually
 const CharSplit = ({ children, className, delay = 0 }) => {
@@ -115,11 +116,14 @@ export default function Hero() {
             <div className="w-full min-[900px]:w-[35%] h-[45%] min-[900px]:h-full flex flex-col z-20">
                 {/* Top Right Block (Black) */}
                 <div className="block-reveal w-full h-full min-[900px]:h-[65%] bg-dark flex flex-col justify-center items-start pl-[calc(2.5vw+1rem)] pr-4 min-[900px]:px-12 lg:px-16 relative">
-                    <h2 className="flex flex-col gap-0 text-primary font-heading font-semibold text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] uppercase leading-[0.9] tracking-tighter relative z-10">
-                        <CharSplit delay={0.3} className="">{t('hero.titleLine1')}</CharSplit>
-                        <CharSplit delay={0.52} className="">{t('hero.titleLine2')}</CharSplit>
-                        <CharSplit delay={0.74} className="">{t('hero.titleLine3')}</CharSplit>
-                    </h2>
+                    <MorphingText
+                        texts={[
+                            t('hero.titleLine1'),
+                            t('hero.titleLine2'),
+                            t('hero.titleLine3'),
+                        ]}
+                        className="text-left text-primary font-heading font-semibold text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] uppercase leading-[0.9] tracking-tighter h-[1.1em] mx-0 max-w-none"
+                    />
                 </div>
 
                 {/* Bottom Right Block (White) — desktop only */}
