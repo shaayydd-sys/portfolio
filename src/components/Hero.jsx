@@ -4,26 +4,6 @@ import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { MorphingText } from './ui/morphing-text';
 
-// Per-character stagger reveal — animates each letter individually
-const CharSplit = ({ children, className, delay = 0 }) => {
-    const text = String(children);
-    return (
-        <span className={className} aria-label={text}>
-            {text.split('').map((char, i) => (
-                <span
-                    key={i}
-                    className="inline-block"
-                    style={{
-                        animation: `charReveal 0.9s cubic-bezier(0.16,1,0.3,1) both`,
-                        animationDelay: `${delay + i * 0.045}s`,
-                    }}
-                >
-                    {char === ' ' ? '\u00a0' : char}
-                </span>
-            ))}
-        </span>
-    );
-};
 
 export default function Hero() {
     const { t, i18n } = useTranslation();
@@ -88,20 +68,10 @@ export default function Hero() {
                         {t('hero.subtitle')}
                     </p>
 
-                    <h1 className={`flex flex-col ${isRu ? 'gap-4 min-[900px]:gap-6' : 'gap-0 min-[900px]:gap-2'} relative`}>
-                        <CharSplit
-                            delay={0.5}
-                            className={`font-heading font-semibold ${isRu ? 'text-[2.8rem] sm:text-[3.8rem] min-[900px]:text-[4.8rem] lg:text-[5.4rem] xl:text-[6.5rem]' : 'text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem]'} text-dark leading-[0.9] min-[900px]:leading-[0.85] tracking-tighter uppercase`}
-                        >
-                            {t('hero.nameFirst')}
-                        </CharSplit>
-                        <CharSplit
-                            delay={0.72}
-                            className={`font-heading font-semibold ${isRu ? 'text-[2.8rem] sm:text-[3.8rem] min-[900px]:text-[4.8rem] lg:text-[5.4rem] xl:text-[6.5rem]' : 'text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem]'} text-dark leading-[0.9] min-[900px]:leading-[0.85] tracking-tighter uppercase`}
-                        >
-                            {t('hero.nameLast')}
-                        </CharSplit>
-                    </h1>
+                    <MorphingText
+                        texts={[t('hero.nameFirst'), t('hero.nameLast')]}
+                        className={`text-left text-dark font-heading font-semibold ${isRu ? 'text-[2.8rem] sm:text-[3.8rem] min-[900px]:text-[4.8rem] lg:text-[5.4rem] xl:text-[6.5rem]' : 'text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem]'} uppercase leading-[0.9] tracking-tighter h-[1.1em] mx-0 max-w-none`}
+                    />
 
                     <div className="text-reveal mt-8 min-[900px]:mt-16">
                         <p className="font-sans text-dark/70 text-xs min-[900px]:text-sm font-semibold tracking-widest uppercase flex items-center gap-4">
