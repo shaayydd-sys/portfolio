@@ -39,7 +39,17 @@ export default function Hero() {
                 ease: 'power3.out',
             });
 
-            // Text reveal inside blocks (subtitle, CTA line)
+            // Subtitle: flies out from the line (left → right reveal)
+            gsap.from('.hero-subtitle', {
+                clipPath: 'inset(0 100% 0 0)',
+                x: -12,
+                opacity: 0,
+                duration: 1.2,
+                ease: 'expo.out',
+                delay: 0.5,
+            });
+
+            // Text reveal inside blocks (CTA line)
             gsap.from('.text-reveal', {
                 y: 40,
                 opacity: 0,
@@ -71,7 +81,7 @@ export default function Hero() {
             {/* Left Block (Red) */}
             <div className="block-reveal w-full min-[900px]:w-[65%] h-[55%] min-[900px]:h-full bg-accent flex flex-col justify-center items-start relative z-10 pl-[calc(2.5vw+1rem)] pr-4 min-[900px]:px-8 overflow-hidden">
                 <div className="flex flex-col relative text-left pt-24 min-[900px]:pt-0 w-full max-w-3xl">
-                    <p className="text-reveal font-heading text-dark/80 text-sm min-[900px]:text-base font-medium mb-6 min-[900px]:mb-12 max-w-xs leading-snug pr-0 min-[900px]:pr-12 min-[900px]:pl-1 relative">
+                    <p className="hero-subtitle font-heading text-dark/80 text-sm min-[900px]:text-base font-medium mb-6 min-[900px]:mb-12 max-w-xs leading-snug pr-0 min-[900px]:pr-12 min-[900px]:pl-6 relative">
                         <span className="hidden min-[900px]:block absolute left-0 top-0 bottom-0 w-[3px] bg-dark/10"></span>
                         {t('hero.subtitle')}
                     </p>
