@@ -1,6 +1,6 @@
-import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { MorphIn } from './ui/morph-in';
 
 export default function Footer() {
     const { t } = useTranslation();
@@ -12,7 +12,7 @@ export default function Footer() {
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 relative z-10">
 
                     {/* Brand */}
-                    <div className="max-w-md">
+                    <MorphIn className="max-w-md">
                         <h2 className="font-heading font-bold text-3xl mb-4 text-primary tracking-tighter">{t('footer.name')}</h2>
                         <p className="font-data text-sm text-primary/60 mb-8 max-w-sm">
                             {t('footer.tagline')}
@@ -22,10 +22,10 @@ export default function Footer() {
                             <div className="w-2.5 h-2.5 rounded-none bg-[#E63B2E] animate-pulse"></div>
                             <span className="font-data text-xs uppercase tracking-widest text-primary/80">{t('footer.status')}</span>
                         </div>
-                    </div>
+                    </MorphIn>
 
                     {/* Links Grid */}
-                    <div className="grid grid-cols-2 gap-12 md:gap-24 font-data text-sm">
+                    <MorphIn delay={0.1} className="grid grid-cols-2 gap-12 md:gap-24 font-data text-sm">
                         <div className="flex flex-col gap-4">
                             <h4 className="font-heading font-semibold text-primary/40 mb-2 uppercase tracking-widest">{t('footer.connectLabel')}</h4>
                             <a href="mailto:shaayydd@gmail.com" className="hover:text-accent transition-colors flex items-center gap-1 group">
@@ -46,7 +46,7 @@ export default function Footer() {
                             <a href="#skills" className="hover:text-accent transition-colors">{t('footer.skills')}</a>
                             <a href="#projects" className="hover:text-accent transition-colors">{t('footer.projects')}</a>
                         </div>
-                    </div>
+                    </MorphIn>
                 </div>
 
                 <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-data text-primary/40">

@@ -90,6 +90,18 @@
     }
 }
 
+/* Morph-in reveal: blur → sharp, triggered once on scroll */
+@keyframes morphIn {
+    from {
+        filter: blur(14px);
+        opacity: 0;
+    }
+    to {
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
 /* Footer marquee */
 @keyframes marquee {
     from { transform: translateX(0); }

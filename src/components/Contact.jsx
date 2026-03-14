@@ -1,9 +1,6 @@
-import React, { useState, useLayoutEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-gsap.registerPlugin(ScrollTrigger);
+import { MorphIn } from './ui/morph-in';
 
 const TelegramIcon = () => (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -25,29 +22,8 @@ const GmailIcon = () => (
 
 export default function Contact() {
     const { t } = useTranslation();
-    const container = useRef(null);
     const [form, setForm] = useState({ email: '', description: '', budget: '' });
     const [submitted, setSubmitted] = useState(false);
-
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            gsap.from('.contact-header', {
-                scrollTrigger: { trigger: container.current, start: 'top 75%' },
-                clipPath: 'inset(0 0 100% 0)',
-                y: 20,
-                duration: 1.2,
-                ease: 'power3.out',
-            });
-            gsap.from('.contact-form', {
-                scrollTrigger: { trigger: container.current, start: 'top 60%' },
-                clipPath: 'inset(0 0 100% 0)',
-                y: 30,
-                duration: 1.2,
-                ease: 'power3.out',
-            });
-        }, container);
-        return () => ctx.revert();
-    }, []);
 
     const handleChange = (e) => {
         setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -84,21 +60,21 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" ref={container} className="w-full py-24 min-[900px]:py-32 px-6 min-[900px]:px-16 bg-background relative z-10">
+        <section id="contact" className="w-full py-24 min-[900px]:py-32 px-6 min-[900px]:px-16 bg-background relative z-10">
             <div className="max-w-4xl mx-auto">
 
                 {/* Header */}
-                <div className="contact-header mb-16">
+                <MorphIn className="mb-16">
                     <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">
                         {t('contact.label')}
                     </span>
                     <h2 className="font-heading font-bold text-5xl min-[900px]:text-7xl uppercase tracking-tighter text-dark leading-tight">
                         {t('contact.title1')}<br />{t('contact.title2')}
                     </h2>
-                </div>
+                </MorphIn>
 
                 {/* Form */}
-                <div className="contact-form">
+                <MorphIn delay={0.15}>
                     {submitted ? (
                         <div className="py-16 flex flex-col items-start gap-10">
                             <div>
@@ -240,7 +216,7 @@ export default function Contact() {
 
                         </form>
                     )}
-                </div>
+                </MorphIn>
 
             </div>
         </section>

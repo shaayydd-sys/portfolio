@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
-
-gsap.registerPlugin(ScrollTrigger);
+import { MorphIn } from './ui/morph-in';
 
 // ----------------------------------------
 // Card 1: UI/UX Architecture (Wireframe)
@@ -494,35 +492,6 @@ export default function Features() {
     const { t } = useTranslation();
     const sectionRef = useRef(null);
 
-    useEffect(() => {
-        let ctx = gsap.context(() => {
-            // Header Animation
-            gsap.from('.features-header', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 75%",
-                },
-                clipPath: 'inset(0 0 100% 0)',
-                y: 20,
-                duration: 1.2,
-                ease: 'power3.out',
-            });
-
-            // Card Animations
-            gsap.from('.feature-card', {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 60%",
-                },
-                clipPath: 'inset(0 0 100% 0)',
-                y: 40,
-                duration: 1,
-                stagger: 0.12,
-                ease: 'power3.out'
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
 
     // 3D tilt on each card (desktop only)
     useEffect(() => {
@@ -566,22 +535,21 @@ export default function Features() {
 
     return (
         <section ref={sectionRef} id="skills" className="py-32 px-6 md:px-16 container mx-auto relative z-10">
-            <div className="features-header mb-20 text-center flex flex-col items-center">
+            <MorphIn className="mb-20 text-center flex flex-col items-center">
                 <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">
                     {t('skills.label')}
                 </span>
                 <h2 className="font-heading font-bold text-5xl md:text-7xl uppercase tracking-tighter text-dark">
                     {t('skills.title')}
                 </h2>
-            </div>
+            </MorphIn>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="feature-card"><ShufflerCard /></div>
-                <div className="feature-card"><TypewriterCard /></div>
-                <div className="feature-card"><SchedulerCard /></div>
-                <div className="feature-card"><UserResearchCard /></div>
-                <div className="feature-card"><DesignSystemsCard /></div>
-                <div className="feature-card"><InteractionDesignCard /></div>
+                {[ShufflerCard, TypewriterCard, SchedulerCard, UserResearchCard, DesignSystemsCard, InteractionDesignCard].map((Card, i) => (
+                    <MorphIn key={i} delay={i * 0.08}>
+                        <Card />
+                    </MorphIn>
+                ))}
             </div>
         </section>
     );

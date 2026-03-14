@@ -1,60 +1,29 @@
-import React, { useLayoutEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
-
-gsap.registerPlugin(ScrollTrigger);
+import { MorphIn } from './ui/morph-in';
 
 export default function Experience() {
     const { t } = useTranslation();
     const experiences = t('experience.jobs', { returnObjects: true });
-    const container = useRef(null);
-
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            gsap.from('.exp-header', {
-                scrollTrigger: {
-                    trigger: container.current,
-                    start: 'top 75%',
-                },
-                clipPath: 'inset(0 0 100% 0)',
-                y: 20,
-                duration: 1.2,
-                ease: 'power3.out',
-            });
-
-            gsap.from('.exp-card', {
-                scrollTrigger: {
-                    trigger: container.current,
-                    start: 'top 60%',
-                },
-                clipPath: 'inset(0 0 100% 0)',
-                y: 30,
-                duration: 1.2,
-                stagger: 0.25,
-                ease: 'power3.out',
-            });
-        }, container);
-
-        return () => ctx.revert();
-    }, []);
 
     return (
-        <section id="experience" ref={container} className="w-full py-32 px-6 md:px-16 bg-dark text-primary relative z-10 selection:bg-accent selection:text-primary">
+        <section id="experience" className="w-full py-32 px-6 md:px-16 bg-dark text-primary relative z-10 selection:bg-accent selection:text-primary">
             <div className="max-w-5xl mx-auto relative z-10">
-                <div className="exp-header mb-20 text-center flex flex-col items-center">
+                <MorphIn className="mb-20 text-center flex flex-col items-center">
                     <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">
                         {t('experience.label')}
                     </span>
                     <h2 className="font-heading font-bold text-5xl md:text-7xl uppercase tracking-tighter">
                         {t('experience.title')}
                     </h2>
-                </div>
+                </MorphIn>
 
                 <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-primary/20 before:to-transparent">
                     {experiences.map((exp, index) => (
-                        <div key={index} className="exp-card relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-
+                        <MorphIn
+                            key={index}
+                            delay={index * 0.15}
+                            className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+                        >
                             {/* Timeline Node */}
                             <div className="flex items-center justify-center w-10 h-10 border-2 border-primary/20 bg-dark absolute left-0 md:left-1/2 md:-translate-x-1/2 group-hover:border-accent transition-colors duration-300 rounded-none">
                                 <div className="w-2.5 h-2.5 bg-primary/40 group-hover:bg-accent transition-colors duration-300 rounded-none"></div>
@@ -76,8 +45,7 @@ export default function Experience() {
                                     {exp.description}
                                 </p>
                             </div>
-
-                        </div>
+                        </MorphIn>
                     ))}
                 </div>
             </div>

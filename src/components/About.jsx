@@ -1,42 +1,11 @@
-import React, { useLayoutEffect, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
-
-gsap.registerPlugin(ScrollTrigger);
+import { MorphIn } from './ui/morph-in';
 
 export default function About() {
     const { t } = useTranslation();
-    const container = useRef(null);
     const imageRef = useRef(null);
-
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            gsap.from('.about-reveal', {
-                scrollTrigger: {
-                    trigger: container.current,
-                    start: 'top 70%',
-                },
-                clipPath: 'inset(0 0 100% 0)',
-                y: 20,
-                duration: 1.2,
-                stagger: 0.12,
-                ease: 'power3.out',
-            });
-
-            gsap.from('.about-image', {
-                scrollTrigger: {
-                    trigger: container.current,
-                    start: 'top 70%',
-                },
-                clipPath: 'inset(100% 0 0 0)',
-                duration: 1.4,
-                ease: 'power3.out',
-            });
-        }, container);
-
-        return () => ctx.revert();
-    }, []);
 
     // 3D tilt on image hover (desktop only)
     useEffect(() => {
@@ -76,14 +45,14 @@ export default function About() {
     }, []);
 
     return (
-        <section id="about" ref={container} className="w-full pt-10 pb-16 min-[900px]:py-32 px-6 min-[900px]:px-16 bg-background relative z-10">
+        <section id="about" className="w-full pt-10 pb-16 min-[900px]:py-32 px-6 min-[900px]:px-16 bg-background relative z-10">
             <div className="max-w-7xl mx-auto grid grid-cols-1 min-[900px]:grid-cols-[5fr_7fr] gap-12 min-[900px]:gap-16 items-center">
 
                 {/* Image Column */}
                 <div className="relative">
                     <div
                         ref={imageRef}
-                        className="about-image relative w-full aspect-[4/5] rounded-none overflow-hidden bg-dark/5"
+                        className="relative w-full aspect-[4/5] rounded-none overflow-hidden bg-dark/5"
                         style={{ transformStyle: 'preserve-3d' }}
                     >
                         <img
@@ -97,26 +66,26 @@ export default function About() {
 
                 {/* Text Column */}
                 <div className="flex flex-col justify-center">
-                    <div className="mb-6 flex space-x-4 items-center about-reveal">
+                    <MorphIn className="mb-6 flex space-x-4 items-center" delay={0}>
                         <span className="w-12 h-[1px] bg-accent"></span>
                         <span className="font-data text-xs md:text-sm uppercase tracking-widest text-dark/60">
                             {t('about.label')}
                         </span>
-                    </div>
+                    </MorphIn>
 
-                    <h2 className="about-reveal font-heading font-bold text-4xl min-[900px]:text-6xl text-dark mb-4 leading-tight uppercase tracking-tighter">
+                    <MorphIn as="h2" delay={0.1} className="font-heading font-bold text-4xl min-[900px]:text-6xl text-dark mb-4 leading-tight uppercase tracking-tighter">
                         {t('about.title')}
-                    </h2>
-                    <h3 className="about-reveal font-heading font-medium tracking-tight text-2xl min-[900px]:text-4xl text-dark/80 mb-8">
+                    </MorphIn>
+                    <MorphIn as="h3" delay={0.2} className="font-heading font-medium tracking-tight text-2xl min-[900px]:text-4xl text-dark/80 mb-8">
                         {t('about.name')}
-                    </h3>
+                    </MorphIn>
 
-                    <div className="space-y-6 text-dark/70 font-sans text-base md:text-lg leading-relaxed max-w-2xl about-reveal">
+                    <MorphIn delay={0.3} className="space-y-6 text-dark/70 font-sans text-base md:text-lg leading-relaxed max-w-2xl">
                         <p>{t('about.bio1')}</p>
                         <p>{t('about.bio2')}</p>
-                    </div>
+                    </MorphIn>
 
-                    <div className="mt-12 grid grid-cols-2 gap-8 about-reveal">
+                    <MorphIn delay={0.4} className="mt-12 grid grid-cols-2 gap-8">
                         <div>
                             <p className="font-data text-xs text-dark/50 uppercase tracking-widest mb-1">{t('about.ageLabel')}</p>
                             <p className="font-heading font-bold text-xl text-dark">{t('about.ageValue')}</p>
@@ -125,7 +94,7 @@ export default function About() {
                             <p className="font-data text-xs text-dark/50 uppercase tracking-widest mb-1">{t('about.bornLabel')}</p>
                             <p className="font-heading font-bold text-xl text-dark">{t('about.bornValue')}</p>
                         </div>
-                    </div>
+                    </MorphIn>
                 </div>
             </div>
         </section>
