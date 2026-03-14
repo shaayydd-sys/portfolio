@@ -91,13 +91,13 @@ export default function Hero() {
                             delay={0.5}
                             className="font-heading font-semibold text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem] text-dark leading-[0.85] min-[900px]:leading-[0.8] tracking-tighter uppercase"
                         >
-                            Damir
+                            {t('hero.nameFirst')}
                         </CharSplit>
                         <CharSplit
                             delay={0.72}
                             className="font-heading font-semibold text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem] text-dark leading-[0.85] min-[900px]:leading-[0.8] tracking-tighter uppercase"
                         >
-                            Shaikhullin
+                            {t('hero.nameLast')}
                         </CharSplit>
                     </h1>
 
@@ -115,9 +115,9 @@ export default function Hero() {
                 {/* Top Right Block (Black) */}
                 <div className="block-reveal w-full h-full min-[900px]:h-[65%] bg-dark flex flex-col justify-center items-start pl-[calc(2.5vw+1rem)] pr-4 min-[900px]:px-12 lg:px-16 relative">
                     <h2 className="flex flex-col gap-0 text-primary font-heading font-semibold text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] uppercase leading-[0.9] tracking-tighter relative z-10">
-                        <CharSplit delay={0.3} className="">Graphic</CharSplit>
-                        <CharSplit delay={0.52} className="">UX/UI</CharSplit>
-                        <CharSplit delay={0.74} className="">Designer</CharSplit>
+                        <CharSplit delay={0.3} className="">{t('hero.titleLine1')}</CharSplit>
+                        <CharSplit delay={0.52} className="">{t('hero.titleLine2')}</CharSplit>
+                        <CharSplit delay={0.74} className="">{t('hero.titleLine3')}</CharSplit>
                     </h2>
                 </div>
 

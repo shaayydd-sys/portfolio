@@ -13,7 +13,7 @@ export default function Footer() {
 
                     {/* Brand */}
                     <div className="max-w-md">
-                        <h2 className="font-heading font-bold text-3xl mb-4 text-primary tracking-tighter">Damir Shaikhullin.</h2>
+                        <h2 className="font-heading font-bold text-3xl mb-4 text-primary tracking-tighter">{t('footer.name')}</h2>
                         <p className="font-data text-sm text-primary/60 mb-8 max-w-sm">
                             {t('footer.tagline')}
                         </p>

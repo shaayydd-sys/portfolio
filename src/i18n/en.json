@@ -8,13 +8,18 @@
   },
   "hero": {
     "subtitle": "Intuitive interface architecture for the world's most critical digital experiences.",
-    "year": "2025 Damir Shaikhullin"
+    "year": "2025 Damir Shaikhullin",
+    "nameFirst": "Damir",
+    "nameLast": "Shaikhullin",
+    "titleLine1": "Graphic",
+    "titleLine2": "UX/UI",
+    "titleLine3": "Designer"
   },
   "marquee": "DAMIR SHAIKHULLIN\u00a0\u00a0•\u00a0\u00a0GRAPHIC DESIGNER\u00a0\u00a0•\u00a0\u00a0UI/UX\u00a0\u00a0•\u00a0\u00a0FIGMA\u00a0\u00a0•\u00a0\u00a0ILLUSTRATOR\u00a0\u00a0•\u00a0\u00a0PHOTOSHOP\u00a0\u00a0•\u00a0\u00a0",
   "about": {
     "label": "Identification",
     "title": "About Me",
-    "name": "Damir Shaikhullin.",
+    "name": "Damir Shaikhullin",
     "bio1": "Graphic designer specializing in UI/UX design. My passion is creating intuitive and visually appealing interfaces for a global audience.",
     "bio2": "Fluency in English and several years of living in Portugal have shaped my deep understanding of cross-cultural aspects of user interaction. With experience working across various design tools, I strive to bring innovative ideas to life and create products that are both functional and aesthetically pleasing.",
     "ageLabel": "Age",
@@ -119,6 +124,7 @@
     "experience": "Experience",
     "skills": "Skills",
     "projects": "Projects",
+    "name": "Damir Shaikhullin.",
     "copyright": "© 2025 Damir Shaikhullin."
   }
 }
