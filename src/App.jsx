@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Cursor from './components/Cursor';
@@ -16,9 +18,20 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-function App() {
+function LanguageRedirect() {
+    const browserLang = navigator.language.toLowerCase();
+    const lang = browserLang.startsWith('ru') ? 'ru' : 'en';
+    return <Navigate to={`/${lang}`} replace />;
+}
+
+function Portfolio({ lang }) {
+    const { i18n } = useTranslation();
+
     useEffect(() => {
-        // Handle Anchor Links (Smooth Scroll to ID)
+        i18n.changeLanguage(lang);
+    }, [lang, i18n]);
+
+    useEffect(() => {
         const handleAnchorClick = (e) => {
             const target = e.currentTarget;
             const hash = target.getAttribute('href');
@@ -38,7 +51,7 @@ function App() {
         return () => {
             anchorLinks.forEach(link => link.removeEventListener('click', handleAnchorClick));
         };
-    }, []);
+    }, [lang]);
 
     return (
         <div className="min-h-screen relative selection:bg-accent selection:text-primary overflow-x-hidden">
@@ -49,10 +62,6 @@ function App() {
             <Marquee />
             <Experience />
             <Features />
-            {/* 
-        Protocol uses sticky scroll-trigger so needs its own section styling 
-        but handles overflow internally.
-      */}
             <Protocol />
             <Contact />
             <Footer />
@@ -60,4 +69,15 @@ function App() {
     );
 }
 
-export default App;
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LanguageRedirect />} />
+                <Route path="/en" element={<Portfolio lang="en" />} />
+                <Route path="/ru" element={<Portfolio lang="ru" />} />
+                <Route path="*" element={<LanguageRedirect />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}

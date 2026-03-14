@@ -1,10 +1,12 @@
 import React, { useLayoutEffect, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+    const { t } = useTranslation();
     const container = useRef(null);
     const imageRef = useRef(null);
 
@@ -98,34 +100,30 @@ export default function About() {
                     <div className="mb-6 flex space-x-4 items-center about-reveal">
                         <span className="w-12 h-[1px] bg-accent"></span>
                         <span className="font-data text-xs md:text-sm uppercase tracking-widest text-dark/60">
-                            Identification
+                            {t('about.label')}
                         </span>
                     </div>
 
                     <h2 className="about-reveal font-heading font-bold text-4xl min-[900px]:text-6xl text-dark mb-4 leading-tight uppercase tracking-tighter">
-                        About Me
+                        {t('about.title')}
                     </h2>
                     <h3 className="about-reveal font-heading font-medium tracking-tight text-2xl min-[900px]:text-4xl text-dark/80 mb-8">
-                        Damir Shaikhullin.
+                        {t('about.name')}
                     </h3>
 
                     <div className="space-y-6 text-dark/70 font-sans text-base md:text-lg leading-relaxed max-w-2xl about-reveal">
-                        <p>
-                            Graphic designer specializing in UI/UX design. My passion is creating intuitive and visually appealing interfaces for a global audience.
-                        </p>
-                        <p>
-                            Fluency in English and several years of living in Portugal have shaped my deep understanding of cross-cultural aspects of user interaction. With experience working across various design tools, I strive to bring innovative ideas to life and create products that are both functional and aesthetically pleasing.
-                        </p>
+                        <p>{t('about.bio1')}</p>
+                        <p>{t('about.bio2')}</p>
                     </div>
 
                     <div className="mt-12 grid grid-cols-2 gap-8 about-reveal">
                         <div>
-                            <p className="font-data text-xs text-dark/50 uppercase tracking-widest mb-1">Age</p>
-                            <p className="font-heading font-bold text-xl text-dark">23</p>
+                            <p className="font-data text-xs text-dark/50 uppercase tracking-widest mb-1">{t('about.ageLabel')}</p>
+                            <p className="font-heading font-bold text-xl text-dark">{t('about.ageValue')}</p>
                         </div>
                         <div>
-                            <p className="font-data text-xs text-dark/50 uppercase tracking-widest mb-1">Born</p>
-                            <p className="font-heading font-bold text-xl text-dark">May 26, 2002</p>
+                            <p className="font-data text-xs text-dark/50 uppercase tracking-widest mb-1">{t('about.bornLabel')}</p>
+                            <p className="font-heading font-bold text-xl text-dark">{t('about.bornValue')}</p>
                         </div>
                     </div>
                 </div>

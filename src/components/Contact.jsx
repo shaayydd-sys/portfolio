@@ -1,6 +1,7 @@
 import React, { useState, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +24,7 @@ const GmailIcon = () => (
 );
 
 export default function Contact() {
+    const { t } = useTranslation();
     const container = useRef(null);
     const [form, setForm] = useState({ email: '', description: '', budget: '' });
     const [submitted, setSubmitted] = useState(false);
@@ -88,10 +90,10 @@ export default function Contact() {
                 {/* Header */}
                 <div className="contact-header mb-16">
                     <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">
-                        Get in touch
+                        {t('contact.label')}
                     </span>
                     <h2 className="font-heading font-bold text-5xl min-[900px]:text-7xl uppercase tracking-tighter text-dark leading-tight">
-                        Tell me about<br />your project
+                        {t('contact.title1')}<br />{t('contact.title2')}
                     </h2>
                 </div>
 
@@ -100,8 +102,8 @@ export default function Contact() {
                     {submitted ? (
                         <div className="py-16 flex flex-col items-start gap-10">
                             <div>
-                                <p className="font-heading font-bold text-3xl text-dark mb-2">Message received.</p>
-                                <p className="font-data text-sm text-dark/50 uppercase tracking-widest">I'll get back to you shortly.</p>
+                                <p className="font-heading font-bold text-3xl text-dark mb-2">{t('contact.successTitle')}</p>
+                                <p className="font-data text-sm text-dark/50 uppercase tracking-widest">{t('contact.successSub')}</p>
                             </div>
 
                             <div className="flex flex-col gap-3">
@@ -140,7 +142,7 @@ export default function Contact() {
                                 className="relative overflow-hidden group px-10 py-4 bg-dark text-primary font-heading font-semibold text-sm uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_30px_rgba(17,17,17,0.15)]"
                             >
                                 <span className="absolute inset-0 bg-accent -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] z-0" />
-                                <span className="relative z-10">Send another message</span>
+                                <span className="relative z-10">{t('contact.sendAnother')}</span>
                             </button>
                         </div>
                     ) : (
@@ -149,7 +151,7 @@ export default function Contact() {
                             {/* Email */}
                             <div className="group border-t border-dark/10 py-6 focus-within:border-accent transition-colors duration-300">
                                 <label className="font-data text-xs text-dark/40 uppercase tracking-widest block mb-3">
-                                    Email
+                                    {t('contact.emailLabel')}
                                 </label>
                                 <input
                                     type="email"
@@ -157,7 +159,7 @@ export default function Contact() {
                                     required
                                     value={form.email}
                                     onChange={handleChange}
-                                    placeholder="your@email.com"
+                                    placeholder={t('contact.emailPlaceholder')}
                                     className="w-full bg-transparent font-heading text-xl min-[900px]:text-2xl text-dark placeholder:text-dark/20 outline-none border-none"
                                 />
                             </div>
@@ -165,7 +167,7 @@ export default function Contact() {
                             {/* Project Description */}
                             <div className="group border-t border-dark/10 py-6 focus-within:border-accent transition-colors duration-300">
                                 <label className="font-data text-xs text-dark/40 uppercase tracking-widest block mb-3">
-                                    Project description
+                                    {t('contact.descLabel')}
                                 </label>
                                 <textarea
                                     name="description"
@@ -173,7 +175,7 @@ export default function Contact() {
                                     rows={4}
                                     value={form.description}
                                     onChange={handleChange}
-                                    placeholder="Tell me what you're building..."
+                                    placeholder={t('contact.descPlaceholder')}
                                     className="w-full bg-transparent font-heading text-xl min-[900px]:text-2xl text-dark placeholder:text-dark/20 outline-none border-none resize-none leading-snug"
                                 />
                             </div>
@@ -181,14 +183,14 @@ export default function Contact() {
                             {/* Budget */}
                             <div className="group border-t border-dark/10 py-6 focus-within:border-accent transition-colors duration-300">
                                 <label className="font-data text-xs text-dark/40 uppercase tracking-widest block mb-3">
-                                    Project budget
+                                    {t('contact.budgetLabel')}
                                 </label>
                                 <input
                                     type="text"
                                     name="budget"
                                     value={form.budget}
                                     onChange={handleChange}
-                                    placeholder="e.g. $2,000 — $5,000"
+                                    placeholder={t('contact.budgetPlaceholder')}
                                     className="w-full bg-transparent font-heading text-xl min-[900px]:text-2xl text-dark placeholder:text-dark/20 outline-none border-none"
                                 />
                             </div>
@@ -200,7 +202,7 @@ export default function Contact() {
                                     className="relative overflow-hidden group px-10 py-4 bg-dark text-primary font-heading font-semibold text-sm uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_30px_rgba(17,17,17,0.15)]"
                                 >
                                     <span className="absolute inset-0 bg-accent -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] z-0" />
-                                    <span className="relative z-10">Send message</span>
+                                    <span className="relative z-10">{t('contact.submit')}</span>
                                 </button>
 
                                 {/* Social icons */}

@@ -1,8 +1,9 @@
 import React from 'react';
-
-const TEXT = 'DAMIR SHAIKHULLIN\u00a0\u00a0•\u00a0\u00a0GRAPHIC DESIGNER\u00a0\u00a0•\u00a0\u00a0UI/UX\u00a0\u00a0•\u00a0\u00a0FIGMA\u00a0\u00a0•\u00a0\u00a0ILLUSTRATOR\u00a0\u00a0•\u00a0\u00a0PHOTOSHOP\u00a0\u00a0•\u00a0\u00a0';
+import { useTranslation } from 'react-i18next';
 
 export default function Marquee() {
+    const { t } = useTranslation();
+    const TEXT = t('marquee');
     return (
         <div className="w-full overflow-hidden bg-dark py-4 relative z-10">
             <div

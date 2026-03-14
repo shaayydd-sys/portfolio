@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // Per-character stagger reveal — animates each letter individually
 const CharSplit = ({ children, className, delay = 0 }) => {
@@ -24,6 +25,7 @@ const CharSplit = ({ children, className, delay = 0 }) => {
 };
 
 export default function Hero() {
+    const { t } = useTranslation();
     const container = useRef(null);
 
     useLayoutEffect(() => {
@@ -71,7 +73,7 @@ export default function Hero() {
                 <div className="flex flex-col relative text-left pt-24 min-[900px]:pt-0 w-full max-w-3xl">
                     <p className="text-reveal font-heading text-dark/80 text-sm min-[900px]:text-base font-medium mb-6 min-[900px]:mb-12 max-w-xs leading-snug pr-0 min-[900px]:pr-12 min-[900px]:pl-1 relative">
                         <span className="hidden min-[900px]:block absolute left-0 top-0 bottom-0 w-[3px] bg-dark/10"></span>
-                        Intuitive interface architecture for the world's most critical digital experiences.
+                        {t('hero.subtitle')}
                     </p>
 
                     <h1 className="flex flex-col gap-0 min-[900px]:gap-2 relative">
@@ -92,7 +94,7 @@ export default function Hero() {
                     <div className="text-reveal mt-8 min-[900px]:mt-16">
                         <p className="font-sans text-dark/70 text-xs min-[900px]:text-sm font-semibold tracking-widest uppercase flex items-center gap-4">
                             <span className="w-8 min-[900px]:w-12 h-px bg-dark/40"></span>
-                            2025 Damir Shaikhullin
+                            {t('hero.year')}
                         </p>
                     </div>
                 </div>

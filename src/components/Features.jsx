@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -8,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Card 1: UI/UX Architecture (Wireframe)
 // ----------------------------------------
 const ShufflerCard = () => {
+    const { t } = useTranslation();
     const [key, setKey] = useState(0);
 
     useEffect(() => {
@@ -18,8 +20,8 @@ const ShufflerCard = () => {
     return (
         <div className="group/card bg-[#1a1a1a] rounded-none p-8 shadow-xl flex flex-col h-[400px] transition-all duration-500 hover:bg-accent hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(230,59,46,0.2)]" key={key}>
             <div className="mb-6">
-                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">UI/UX Architecture</h3>
-                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">Core structural integrity</p>
+                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">{t('skills.uiux.title')}</h3>
+                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">{t('skills.uiux.sub')}</p>
             </div>
 
             <div className="flex-1 bg-[#161616] group-hover/card:bg-dark/10 relative p-5 flex flex-col gap-2.5 overflow-hidden transition-colors duration-500 border border-transparent group-hover/card:border-dark/20 rounded-none">
@@ -62,6 +64,7 @@ const ShufflerCard = () => {
 // Card 2: Tool Mastery (Icons)
 // ----------------------------------------
 const TypewriterCard = () => {
+    const { t } = useTranslation();
     const [key, setKey] = useState(0);
 
     useEffect(() => {
@@ -72,8 +75,8 @@ const TypewriterCard = () => {
     return (
         <div className="group/card bg-[#1a1a1a] rounded-none p-8 shadow-xl flex flex-col h-[400px] transition-all duration-500 hover:bg-accent hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(230,59,46,0.2)]" key={key}>
             <div className="mb-6">
-                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">Tool Mastery</h3>
-                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">Figma, PS, Illustrator</p>
+                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">{t('skills.tools.title')}</h3>
+                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">{t('skills.tools.sub')}</p>
             </div>
 
             <div className="flex-1 bg-[#161616] group-hover/card:bg-dark/10 relative p-5 flex flex-col justify-around overflow-hidden transition-colors duration-500 border border-transparent group-hover/card:border-dark/20 rounded-none">
@@ -129,6 +132,7 @@ const TypewriterCard = () => {
 // Card 3: AI Protocol (Generation)
 // ----------------------------------------
 const SchedulerCard = () => {
+    const { t } = useTranslation();
     const promptText = 'Generate UI layout for onboarding flow...';
     const [typed, setTyped] = useState('');
     const [phase, setPhase] = useState(0); // 0: type, 1: generating, 2: result
@@ -158,8 +162,8 @@ const SchedulerCard = () => {
     return (
         <div className="group/card bg-[#1a1a1a] rounded-none p-8 shadow-xl flex flex-col h-[400px] transition-all duration-500 hover:bg-accent hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(230,59,46,0.2)]">
             <div className="mb-6">
-                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">AI Integration</h3>
-                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">Generative workflow pipelines</p>
+                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">{t('skills.ai.title')}</h3>
+                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">{t('skills.ai.sub')}</p>
             </div>
 
             <div className="flex-1 bg-[#161616] group-hover/card:bg-dark/10 relative p-4 flex flex-col gap-3 overflow-hidden transition-colors duration-500 border border-transparent group-hover/card:border-dark/20 rounded-none">
@@ -210,6 +214,7 @@ const SchedulerCard = () => {
 // Card 4: User Research (Heatmap)
 // ----------------------------------------
 const UserResearchCard = () => {
+    const { t } = useTranslation();
     const gridRef = useRef(null);
     const requestRef = useRef();
 
@@ -270,8 +275,8 @@ const UserResearchCard = () => {
     return (
         <div className="group/card bg-[#1a1a1a] rounded-none p-8 shadow-xl flex flex-col h-[400px] transition-all duration-500 hover:bg-accent hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(230,59,46,0.2)]">
             <div className="mb-6">
-                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">User Research</h3>
-                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">Behavioral signal mapping</p>
+                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">{t('skills.research.title')}</h3>
+                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">{t('skills.research.sub')}</p>
             </div>
 
             <div className="flex-1 bg-[#161616] group-hover/card:bg-dark/10 relative overflow-hidden transition-colors duration-500 rounded-none border border-transparent group-hover/card:border-dark/20 [--heat-rgb:224,90,58] group-hover/card:[--heat-rgb:17,17,17]">
@@ -290,6 +295,7 @@ const UserResearchCard = () => {
 // Card 5: Design Systems (Cascade)
 // ----------------------------------------
 const DesignSystemsCard = () => {
+    const { t } = useTranslation();
     const [key, setKey] = useState(0);
 
     useEffect(() => {
@@ -300,8 +306,8 @@ const DesignSystemsCard = () => {
     return (
         <div className="group/card bg-[#1a1a1a] rounded-none p-8 shadow-xl flex flex-col h-[400px] transition-all duration-500 hover:bg-accent hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(230,59,46,0.2)]" key={key}>
             <div className="mb-6">
-                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">Design Systems</h3>
-                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">Scalable component logic</p>
+                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">{t('skills.systems.title')}</h3>
+                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">{t('skills.systems.sub')}</p>
             </div>
 
             <div className="flex-1 bg-[#161616] group-hover/card:bg-dark/10 relative p-4 flex flex-col gap-2.5 overflow-hidden transition-colors duration-500 border border-transparent group-hover/card:border-dark/20 rounded-none">
@@ -381,11 +387,12 @@ const DesignSystemsCard = () => {
 import { MousePointer2 } from 'lucide-react';
 
 const InteractionDesignCard = () => {
+    const { t } = useTranslation();
     return (
         <div className="group/card bg-[#1a1a1a] rounded-none p-8 shadow-xl flex flex-col h-[400px] transition-all duration-500 hover:bg-accent hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(230,59,46,0.2)]">
             <div className="mb-6">
-                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">Interaction Design</h3>
-                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">Motion with purpose</p>
+                <h3 className="font-heading font-bold text-2xl text-primary group-hover/card:text-dark">{t('skills.interaction.title')}</h3>
+                <p className="font-data text-xs text-primary/60 group-hover/card:text-dark/90 mt-2">{t('skills.interaction.sub')}</p>
             </div>
 
             <div className="flex-1 bg-[#161616] group-hover/card:bg-dark/10 relative overflow-hidden transition-colors duration-500 p-5 flex flex-col gap-[14px] border border-transparent group-hover/card:border-dark/20 rounded-none [--idle-border:#2a2a2a] group-hover/card:[--idle-border:rgba(17,17,17,0.2)] [--active-border:rgba(230,59,46,0.5)] group-hover/card:[--active-border:#111] [--idle-btn:#333] group-hover/card:[--idle-btn:rgba(17,17,17,0.4)] [--active-btn:#E63B2E] group-hover/card:[--active-btn:#111]">
@@ -484,6 +491,7 @@ const InteractionDesignCard = () => {
 // Main Features Section
 // ----------------------------------------
 export default function Features() {
+    const { t } = useTranslation();
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -560,10 +568,10 @@ export default function Features() {
         <section ref={sectionRef} id="skills" className="py-32 px-6 md:px-16 container mx-auto relative z-10">
             <div className="features-header mb-20 text-center flex flex-col items-center">
                 <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">
-                    Wide Range
+                    {t('skills.label')}
                 </span>
                 <h2 className="font-heading font-bold text-5xl md:text-7xl uppercase tracking-tighter text-dark">
-                    Skills
+                    {t('skills.title')}
                 </h2>
             </div>
 

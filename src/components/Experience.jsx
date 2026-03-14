@@ -1,31 +1,13 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const experiences = [
-    {
-        id: 1,
-        company: "NeuroCity™",
-        location: "Moscow",
-        role: "Graphic Designer",
-        duration: "January 2024 — November 2024",
-        time: "11 months",
-        description: "Developed prototypes (animations and visuals) for information kiosks, as well as integrations of various applications into them."
-    },
-    {
-        id: 2,
-        company: "Design Glass",
-        location: "Remote/Hybrid",
-        role: "Graphic Designer",
-        duration: "March 2022 — January 2024",
-        time: "1 year 11 months",
-        description: "Created website designs for the company. Produced presentations for architectural projects that were showcased to clients. Most tasks were completed in Figma and Illustrator. Completed advanced courses in Figma, Illustrator, After Effects, and general web design skills."
-    }
-];
-
 export default function Experience() {
+    const { t } = useTranslation();
+    const experiences = t('experience.jobs', { returnObjects: true });
     const container = useRef(null);
 
     useLayoutEffect(() => {
@@ -62,16 +44,16 @@ export default function Experience() {
             <div className="max-w-5xl mx-auto relative z-10">
                 <div className="exp-header mb-20 text-center flex flex-col items-center">
                     <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">
-                        Career Timeline
+                        {t('experience.label')}
                     </span>
                     <h2 className="font-heading font-bold text-5xl md:text-7xl uppercase tracking-tighter">
-                        Work Experience
+                        {t('experience.title')}
                     </h2>
                 </div>
 
                 <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-primary/20 before:to-transparent">
                     {experiences.map((exp, index) => (
-                        <div key={exp.id} className="exp-card relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div key={index} className="exp-card relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
 
                             {/* Timeline Node */}
                             <div className="flex items-center justify-center w-10 h-10 border-2 border-primary/20 bg-dark absolute left-0 md:left-1/2 md:-translate-x-1/2 group-hover:border-accent transition-colors duration-300 rounded-none">

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useInView } from 'react-intersection-observer';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,52 +121,16 @@ const PulseWave = () => (
     </svg>
 );
 
-const uiUxProjects = [
-    {
-        id: "uiux-1",
-        num: "01",
-        title: "WAM",
-        desc: "A complete UX/UI project for a modeling agency - from research to final design. I led the user research phase, mapped out the full information architecture, and designed every screen in Figma. Visual assets were created in Illustrator and Photoshop. The final product is fully responsive, delivering a seamless experience on desktop, tablet, and mobile.",
-        Visual: <ImageSlider images={['/projects/wam-1.png', '/projects/wam-2.jpg']} />
-    },
-    {
-        id: "uiux-2",
-        num: "02",
-        title: "SFIN",
-        desc: "Full landing page design for SFIN - a tokenized asset and installment payment protocol. Bold visual hierarchy, clear user flow, and a sharp fintech aesthetic. Designed in Figma, fully responsive.",
-        Visual: <ImageSlider images={['/projects/sfin-1.jpg', '/projects/sfin-2.jpg', '/projects/sfin-3.jpg', '/projects/sfin-4.jpg', '/projects/sfin-5.jpg']} />
-    },
-    {
-        id: "uiux-3",
-        num: "03",
-        title: "PRADA",
-        desc: "This is not an official Prada project — just a redesign concept I built for the love of it. I wanted to push my visual design skills within a high-end fashion context, so I reimagined their landing page from scratch. Designed in Figma, with assets crafted in Illustrator and Photoshop. Responsive across all devices.",
-        Visual: <ImageSlider images={['/projects/prada-1.jpg', '/projects/prada-2.jpg']} />
-    }
+const uiUxVisuals = [
+    <ImageSlider images={['/projects/wam-1.png', '/projects/wam-2.jpg']} />,
+    <ImageSlider images={['/projects/sfin-1.jpg', '/projects/sfin-2.jpg', '/projects/sfin-3.jpg', '/projects/sfin-4.jpg', '/projects/sfin-5.jpg']} />,
+    <ImageSlider images={['/projects/prada-1.jpg', '/projects/prada-2.jpg']} />,
 ];
 
-const graphicProjects = [
-    {
-        id: "graph-1",
-        num: "01",
-        title: "BRAND 1",
-        desc: "Visual identity and logo mark creation.",
-        Visual: <RotatingMotif /> // Placeholder
-    },
-    {
-        id: "graph-2",
-        num: "02",
-        title: "POSTER 2",
-        desc: "Editorial and print media composition.",
-        Visual: <LinearScanner /> // Placeholder
-    },
-    {
-        id: "graph-3",
-        num: "03",
-        title: "PACKAGING",
-        desc: "Physical product styling and 3D mockups.",
-        Visual: <PulseWave /> // Placeholder
-    }
+const graphicVisuals = [
+    <RotatingMotif />,
+    <LinearScanner />,
+    <PulseWave />,
 ];
 
 // Reusable Project Card Component with pure React+CSS Reveals
@@ -217,9 +182,16 @@ const ProjectCard = ({ step, index }) => {
 };
 
 export default function Protocol() {
+    const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState('uiux');
     const containerRef = useRef(null);
     const cardsRef = useRef([]);
+
+    const uiUxData = t('projects.uiux', { returnObjects: true });
+    const graphicData = t('projects.graphic', { returnObjects: true });
+
+    const uiUxProjects = uiUxData.map((p, i) => ({ ...p, id: `uiux-${i}`, Visual: uiUxVisuals[i] }));
+    const graphicProjects = graphicData.map((p, i) => ({ ...p, id: `graph-${i}`, Visual: graphicVisuals[i] }));
 
     // Get current projects array
     const currentProjects = activeTab === 'uiux' ? uiUxProjects : graphicProjects;
@@ -316,10 +288,10 @@ export default function Protocol() {
                 <div className="max-w-5xl mx-auto">
                     <div className="protocol-header text-center flex flex-col items-center">
                         <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">
-                            Favourites
+                            {t('projects.label')}
                         </span>
                         <h2 className="font-heading font-bold text-5xl md:text-7xl uppercase tracking-tighter mb-8">
-                            My Projects
+                            {t('projects.title')}
                         </h2>
 
                         {/* Toggle Switch */}
@@ -328,13 +300,13 @@ export default function Protocol() {
                                 onClick={() => setActiveTab('uiux')}
                                 className={`px-6 py-2 rounded-full font-heading font-semibold text-sm transition-all duration-300 ${activeTab === 'uiux' ? 'bg-[#1a1a1a] text-accent shadow-md' : 'text-primary/60 hover:text-primary'} hover:text-accent`}
                             >
-                                UI/UX DESIGN
+                                {t('projects.tab_uiux')}
                             </button>
                             <button
                                 onClick={() => setActiveTab('graphic')}
                                 className={`px-6 py-2 rounded-full font-heading font-semibold text-sm transition-all duration-300 ${activeTab === 'graphic' ? 'bg-[#1a1a1a] text-accent shadow-md' : 'text-primary/60 hover:text-primary'} hover:text-accent`}
                             >
-                                GRAPHIC DESIGN
+                                {t('projects.tab_graphic')}
                             </button>
                         </div>
                     </div>

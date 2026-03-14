@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "about": "About Me",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "CONTACT ME"
+  },
+  "hero": {
+    "subtitle": "Intuitive interface architecture for the world's most critical digital experiences.",
+    "year": "2025 Damir Shaikhullin"
+  },
+  "marquee": "DAMIR SHAIKHULLIN\u00a0\u00a0•\u00a0\u00a0GRAPHIC DESIGNER\u00a0\u00a0•\u00a0\u00a0UI/UX\u00a0\u00a0•\u00a0\u00a0FIGMA\u00a0\u00a0•\u00a0\u00a0ILLUSTRATOR\u00a0\u00a0•\u00a0\u00a0PHOTOSHOP\u00a0\u00a0•\u00a0\u00a0",
+  "about": {
+    "label": "Identification",
+    "title": "About Me",
+    "name": "Damir Shaikhullin.",
+    "bio1": "Graphic designer specializing in UI/UX design. My passion is creating intuitive and visually appealing interfaces for a global audience.",
+    "bio2": "Fluency in English and several years of living in Portugal have shaped my deep understanding of cross-cultural aspects of user interaction. With experience working across various design tools, I strive to bring innovative ideas to life and create products that are both functional and aesthetically pleasing.",
+    "ageLabel": "Age",
+    "ageValue": "23",
+    "bornLabel": "Born",
+    "bornValue": "May 26, 2002"
+  },
+  "experience": {
+    "label": "Career Timeline",
+    "title": "Work Experience",
+    "jobs": [
+      {
+        "company": "NeuroCity™",
+        "location": "Moscow",
+        "role": "Graphic Designer",
+        "duration": "January 2024 — November 2024",
+        "time": "11 months",
+        "description": "Developed prototypes (animations and visuals) for information kiosks, as well as integrations of various applications into them."
+      },
+      {
+        "company": "Design Glass",
+        "location": "Remote/Hybrid",
+        "role": "Graphic Designer",
+        "duration": "March 2022 — January 2024",
+        "time": "1 year 11 months",
+        "description": "Created website designs for the company. Produced presentations for architectural projects that were showcased to clients. Most tasks were completed in Figma and Illustrator. Completed advanced courses in Figma, Illustrator, After Effects, and general web design skills."
+      }
+    ]
+  },
+  "skills": {
+    "label": "Wide Range",
+    "title": "Skills",
+    "uiux": { "title": "UI/UX Architecture", "sub": "Core structural integrity" },
+    "tools": { "title": "Tool Mastery", "sub": "Figma, PS, Illustrator" },
+    "ai": { "title": "AI Integration", "sub": "Generative workflow pipelines" },
+    "research": { "title": "User Research", "sub": "Behavioral signal mapping" },
+    "systems": { "title": "Design Systems", "sub": "Scalable component logic" },
+    "interaction": { "title": "Interaction Design", "sub": "Motion with purpose" }
+  },
+  "projects": {
+    "label": "Favourites",
+    "title": "My Projects",
+    "tab_uiux": "UI/UX DESIGN",
+    "tab_graphic": "GRAPHIC DESIGN",
+    "uiux": [
+      {
+        "num": "01",
+        "title": "WAM",
+        "desc": "A complete UX/UI project for a modeling agency - from research to final design. I led the user research phase, mapped out the full information architecture, and designed every screen in Figma. Visual assets were created in Illustrator and Photoshop. The final product is fully responsive, delivering a seamless experience on desktop, tablet, and mobile."
+      },
+      {
+        "num": "02",
+        "title": "SFIN",
+        "desc": "Full landing page design for SFIN - a tokenized asset and installment payment protocol. Bold visual hierarchy, clear user flow, and a sharp fintech aesthetic. Designed in Figma, fully responsive."
+      },
+      {
+        "num": "03",
+        "title": "PRADA",
+        "desc": "This is not an official Prada project — just a redesign concept I built for the love of it. I wanted to push my visual design skills within a high-end fashion context, so I reimagined their landing page from scratch. Designed in Figma, with assets crafted in Illustrator and Photoshop. Responsive across all devices."
+      }
+    ],
+    "graphic": [
+      {
+        "num": "01",
+        "title": "BRAND 1",
+        "desc": "Visual identity and logo mark creation."
+      },
+      {
+        "num": "02",
+        "title": "POSTER 2",
+        "desc": "Editorial and print media composition."
+      },
+      {
+        "num": "03",
+        "title": "PACKAGING",
+        "desc": "Physical product styling and 3D mockups."
+      }
+    ]
+  },
+  "contact": {
+    "label": "Get in touch",
+    "title1": "Tell me about",
+    "title2": "your project",
+    "emailLabel": "Email",
+    "descLabel": "Project description",
+    "budgetLabel": "Project budget",
+    "emailPlaceholder": "your@email.com",
+    "descPlaceholder": "Tell me what you're building...",
+    "budgetPlaceholder": "e.g. $2,000 — $5,000",
+    "submit": "Send message",
+    "successTitle": "Message received.",
+    "successSub": "I'll get back to you shortly.",
+    "sendAnother": "Send another message"
+  },
+  "footer": {
+    "tagline": "Forging structural digital instruments. Integrating AI, designing raw mechanical precision.",
+    "status": "Status: Online",
+    "connectLabel": "Connect",
+    "navLabel": "Navigation",
+    "emailLink": "Email",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "copyright": "© 2025 Damir Shaikhullin."
+  }
+}
