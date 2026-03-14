@@ -87,7 +87,7 @@ export default function Hero() {
                         {t('hero.subtitle')}
                     </p>
 
-                    <h1 className={`flex flex-col ${isRu ? 'gap-2' : 'gap-0'} min-[900px]:gap-2 relative`}>
+                    <h1 className={`flex flex-col ${isRu ? 'gap-4' : 'gap-0'} min-[900px]:gap-2 relative`}>
                         <CharSplit
                             delay={0.5}
                             className={`font-heading font-semibold ${isRu ? 'text-[2.8rem] sm:text-[3.8rem] min-[900px]:text-[4.8rem] lg:text-[5.4rem] xl:text-[6.5rem]' : 'text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem]'} text-dark leading-[0.9] min-[900px]:leading-[0.85] tracking-tighter uppercase`}

@@ -51,7 +51,7 @@ export default function Navbar() {
                 } ${isDarkText ? 'text-dark' : 'text-primary'}`}
         >
             <div className="font-heading font-bold text-lg md:text-xl tracking-tighter">
-                Damir Shaikhullin
+                {t('nav.name')}
             </div>
             <div className="hidden min-[900px]:flex items-center gap-8 font-data text-sm uppercase">
                 <a href="#about" className={`hover-lift transition-colors ${isDarkText ? 'text-dark/80 hover:text-accent' : 'text-primary/80 hover:text-primary'}`}>{t('nav.about')}</a>
