@@ -25,7 +25,8 @@ const CharSplit = ({ children, className, delay = 0 }) => {
 };
 
 export default function Hero() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const isRu = i18n.language === 'ru';
     const container = useRef(null);
 
     useLayoutEffect(() => {
@@ -86,16 +87,16 @@ export default function Hero() {
                         {t('hero.subtitle')}
                     </p>
 
-                    <h1 className="flex flex-col gap-0 min-[900px]:gap-2 relative">
+                    <h1 className={`flex flex-col ${isRu ? 'gap-2' : 'gap-0'} min-[900px]:gap-2 relative`}>
                         <CharSplit
                             delay={0.5}
-                            className="font-heading font-semibold text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem] text-dark leading-[0.85] min-[900px]:leading-[0.8] tracking-tighter uppercase"
+                            className={`font-heading font-semibold ${isRu ? 'text-[2.8rem] sm:text-[3.8rem] min-[900px]:text-[4.8rem] lg:text-[5.4rem] xl:text-[6.5rem]' : 'text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem]'} text-dark leading-[0.9] min-[900px]:leading-[0.85] tracking-tighter uppercase`}
                         >
                             {t('hero.nameFirst')}
                         </CharSplit>
                         <CharSplit
                             delay={0.72}
-                            className="font-heading font-semibold text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem] text-dark leading-[0.85] min-[900px]:leading-[0.8] tracking-tighter uppercase"
+                            className={`font-heading font-semibold ${isRu ? 'text-[2.8rem] sm:text-[3.8rem] min-[900px]:text-[4.8rem] lg:text-[5.4rem] xl:text-[6.5rem]' : 'text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem]'} text-dark leading-[0.9] min-[900px]:leading-[0.85] tracking-tighter uppercase`}
                         >
                             {t('hero.nameLast')}
                         </CharSplit>
