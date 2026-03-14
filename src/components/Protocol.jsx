@@ -238,19 +238,24 @@ export default function Protocol() {
             clearTimeout(timer);
             timer = setTimeout(() => {
                 const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+                const sectionHeight = section.offsetHeight;
+                const cardHeight = sectionHeight / currentProjects.length;
                 const scrolled = window.scrollY - sectionTop;
-                const total = currentProjects.length * window.innerHeight;
-                if (scrolled >= 0 && scrolled < total) {
-                    const idx = Math.round(scrolled / window.innerHeight);
-                    if (idx < 0 || idx >= currentProjects.length) return;
-                    const target = sectionTop + idx * window.innerHeight;
-                    if (Math.abs(window.scrollY - target) > 8) {
-                        isSnapping = true;
-                        window.scrollTo({ top: target, behavior: 'smooth' });
-                        setTimeout(() => { isSnapping = false; }, 600);
-                    }
+
+                // Only snap within the section, with a 1.5-card buffer at the end
+                // so the user can freely scroll out toward Contact/Footer
+                const snapZone = sectionHeight - cardHeight * 1.5;
+                if (scrolled < 0 || scrolled >= snapZone) return;
+
+                const idx = Math.round(scrolled / cardHeight);
+                if (idx < 0 || idx >= currentProjects.length) return;
+                const target = sectionTop + idx * cardHeight;
+                if (Math.abs(window.scrollY - target) > 10) {
+                    isSnapping = true;
+                    window.scrollTo({ top: target, behavior: 'smooth' });
+                    setTimeout(() => { isSnapping = false; }, 700);
                 }
-            }, 80);
+            }, 150);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
