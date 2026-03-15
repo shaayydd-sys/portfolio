@@ -45,7 +45,7 @@ export default function About() {
     }, []);
 
     return (
-        <section id="about" className="w-full pt-10 pb-16 min-[900px]:py-32 px-6 min-[900px]:px-16 bg-background relative z-10">
+        <section id="about" data-transition-color="#F5F3EE" className="w-full pt-10 pb-16 min-[900px]:py-32 px-6 min-[900px]:px-16 bg-background relative z-10">
             <div className="max-w-7xl mx-auto grid grid-cols-1 min-[900px]:grid-cols-[5fr_7fr] gap-12 min-[900px]:gap-16 items-center">
 
                 {/* Image Column */}

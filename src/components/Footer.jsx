@@ -5,7 +5,7 @@ import { MorphIn } from './ui/morph-in';
 export default function Footer() {
     const { t } = useTranslation();
     return (
-        <footer className="bg-dark text-primary rounded-none relative overflow-hidden">
+        <footer data-transition-color="#111111" className="bg-dark text-primary rounded-none relative overflow-hidden">
 
             {/* Main Content */}
             <div className="px-8 py-16 md:px-16">

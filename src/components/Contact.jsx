@@ -60,7 +60,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="w-full py-24 min-[900px]:py-32 px-6 min-[900px]:px-16 bg-background relative z-10">
+        <section id="contact" data-transition-color="#F5F3EE" className="w-full py-24 min-[900px]:py-32 px-6 min-[900px]:px-16 bg-background relative z-10">
             <div className="max-w-4xl mx-auto">
 
                 {/* Header */}

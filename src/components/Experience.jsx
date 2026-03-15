@@ -6,7 +6,7 @@ export default function Experience() {
     const experiences = t('experience.jobs', { returnObjects: true });
 
     return (
-        <section id="experience" className="w-full py-32 px-6 md:px-16 bg-dark text-primary relative z-10 selection:bg-accent selection:text-primary">
+        <section id="experience" data-transition-color="#111111" className="w-full py-32 px-6 md:px-16 bg-dark text-primary relative z-10 selection:bg-accent selection:text-primary">
             <div className="max-w-5xl mx-auto relative z-10">
                 <MorphIn className="mb-20 text-center flex flex-col items-center">
                     <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">

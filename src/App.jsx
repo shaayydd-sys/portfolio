@@ -11,6 +11,7 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import TransitionOverlay from './components/ui/transition-overlay';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -55,6 +56,7 @@ function Portfolio({ lang }) {
 
     return (
         <div className="min-h-screen relative selection:bg-accent selection:text-primary overflow-x-hidden">
+            <TransitionOverlay />
             <Cursor />
             <Navbar />
             <Hero />

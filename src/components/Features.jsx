@@ -534,7 +534,7 @@ export default function Features() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="skills" className="py-32 px-6 md:px-16 container mx-auto relative z-10">
+        <section ref={sectionRef} id="skills" data-transition-color="#F5F3EE" className="py-32 px-6 md:px-16 container mx-auto relative z-10">
             <MorphIn className="mb-20 text-center flex flex-col items-center">
                 <span className="font-data text-accent text-sm uppercase tracking-[0.2em] mb-4 block">
                     {t('skills.label')}
