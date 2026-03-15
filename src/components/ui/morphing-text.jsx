@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useId } from "react";
 import { cn } from "@/lib/utils";
 
 const morphTime = 1.5;
@@ -103,33 +103,36 @@ const Texts = ({ texts }) => {
   );
 };
 
-const SvgFilters = () => (
-  <svg id="filters" className="hidden" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <filter id="threshold">
-        <feColorMatrix
-          in="SourceGraphic"
-          type="matrix"
-          values="1 0 0 0 0
-                  0 1 0 0 0
-                  0 0 1 0 0
-                  0 0 0 255 -140"
-        />
-      </filter>
-    </defs>
-  </svg>
-);
+const MorphingText = ({ texts, className }) => {
+  // unique filter ID per instance — prevents duplicate id="threshold" conflicts
+  const uid = useId().replace(/:/g, "");
+  const filterId = `threshold-${uid}`;
 
-const MorphingText = ({ texts, className }) => (
-  <div
-    className={cn(
-      "relative mx-auto h-16 w-full max-w-screen-md text-center font-sans text-[40pt] font-bold leading-none [filter:url(#threshold)_blur(0.6px)] md:h-24 lg:text-[6rem]",
-      className,
-    )}
-  >
-    <Texts texts={texts} />
-    <SvgFilters />
-  </div>
-);
+  return (
+    <div
+      className={cn(
+        "relative mx-auto h-16 w-full max-w-screen-md text-center font-sans text-[40pt] font-bold leading-none md:h-24 lg:text-[6rem]",
+        className,
+      )}
+      style={{ filter: `url(#${filterId}) blur(0.6px)` }}
+    >
+      <Texts texts={texts} />
+      <svg className="hidden" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <filter id={filterId}>
+            <feColorMatrix
+              in="SourceGraphic"
+              type="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 255 -140"
+            />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+  );
+};
 
 export { MorphingText };
