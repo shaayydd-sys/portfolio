@@ -1,107 +1,53 @@
-import React, { useLayoutEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { MeshGradient } from '@paper-design/shaders-react';
 import { MorphingText } from './ui/morphing-text';
-
 
 export default function Hero() {
     const { t, i18n } = useTranslation();
     const isRu = i18n.language === 'ru';
-    const container = useRef(null);
-
-    useLayoutEffect(() => {
-        let ctx = gsap.context(() => {
-            // Block reveal animations
-            gsap.from('.block-reveal', {
-                yPercent: 20,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: 'power3.out',
-            });
-
-            // Subtitle: flies out from the line (left → right reveal)
-            gsap.from('.hero-subtitle', {
-                clipPath: 'inset(0 100% 0 0)',
-                x: -12,
-                opacity: 0,
-                duration: 1.2,
-                ease: 'expo.out',
-                delay: 0.5,
-            });
-
-            // Text reveal inside blocks (CTA line)
-            gsap.from('.text-reveal', {
-                y: 40,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.1,
-                ease: 'power3.out',
-                delay: 0.6
-            });
-
-            // Continuous smooth bounce for the scroll indicator
-            gsap.to('.scroll-arrow', {
-                y: 6,
-                duration: 1.5,
-                repeat: -1,
-                yoyo: true,
-                ease: 'power1.inOut'
-            });
-
-        }, container);
-
-        return () => ctx.revert();
-    }, []);
 
     return (
-        <section
-            ref={container}
-            className="w-full h-[100svh] min-h-[600px] flex flex-col min-[900px]:flex-row overflow-hidden relative"
-        >
-            {/* Left Block (Red) */}
-            <div className="block-reveal w-full min-[900px]:w-[65%] h-[55%] min-[900px]:h-full bg-accent flex flex-col justify-center items-start relative z-10 pl-[calc(2.5vw+1rem)] pr-4 min-[900px]:px-8 overflow-hidden">
-                <div className="flex flex-col relative text-left pt-24 min-[900px]:pt-0 w-full max-w-3xl">
-                    <p className="hero-subtitle font-heading text-dark/80 text-sm min-[900px]:text-base font-medium mb-6 min-[900px]:mb-12 max-w-xs leading-snug pr-0 min-[900px]:pr-12 min-[900px]:pl-6 relative">
-                        <span className="hidden min-[900px]:block absolute left-0 top-0 bottom-0 w-[3px] bg-dark/10"></span>
-                        {t('hero.subtitle')}
-                    </p>
+        <section className="w-full h-[100svh] min-h-[600px] relative overflow-hidden">
+            {/* Shader background */}
+            <MeshGradient
+                className="absolute inset-0 w-full h-full"
+                colors={['#111111', '#1c0404', '#3a0a0a', '#E63B2E']}
+                speed={0.4}
+                backgroundColor="#111111"
+            />
 
-                    <MorphingText
-                        texts={[t('hero.nameFirst'), t('hero.nameLast')]}
-                        className={`text-left text-dark font-heading font-semibold ${isRu ? 'text-[2.8rem] sm:text-[3.8rem] min-[900px]:text-[4.8rem] lg:text-[5.4rem] xl:text-[6.5rem]' : 'text-[3.5rem] sm:text-[4.5rem] min-[900px]:text-[5.5rem] lg:text-[6rem] xl:text-[7.5rem]'} uppercase leading-[0.9] tracking-tighter h-[1.1em] mx-0 max-w-none`}
-                    />
+            {/* Dark overlay for readability */}
+            <div className="absolute inset-0 bg-dark/40" />
 
-                    <div className="text-reveal mt-8 min-[900px]:mt-16">
-                        <p className="font-sans text-dark/70 text-xs min-[900px]:text-sm font-semibold tracking-widest uppercase flex items-center gap-4">
-                            <span className="w-8 min-[900px]:w-12 h-px bg-dark/40"></span>
-                            {t('hero.year')}
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {/* Content — centered */}
+            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6 text-center gap-6 md:gap-8">
 
-            {/* Right Side (Black & White Columns) */}
-            <div className="w-full min-[900px]:w-[35%] h-[45%] min-[900px]:h-full flex flex-col z-20">
-                {/* Top Right Block (Black) */}
-                <div className="block-reveal w-full h-full min-[900px]:h-[65%] bg-dark flex flex-col justify-center items-start pl-[calc(2.5vw+1rem)] pr-4 min-[900px]:px-12 lg:px-16 relative">
-                    <MorphingText
-                        texts={[
-                            t('hero.titleLine1'),
-                            t('hero.titleLine2'),
-                            t('hero.titleLine3'),
-                        ]}
-                        className="text-left text-primary font-heading font-semibold text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] uppercase leading-[0.9] tracking-tighter h-[1.1em] mx-0 max-w-none"
-                    />
-                </div>
+                {/* Subtitle */}
+                <p className="font-heading text-primary/60 text-sm md:text-base font-medium max-w-xs leading-snug border-l-2 border-primary/20 pl-4 text-left">
+                    {t('hero.subtitle')}
+                </p>
 
-                {/* Bottom Right Block (White) — desktop only */}
-                <div className="hidden min-[900px]:flex block-reveal w-full h-[35%] bg-background flex-col justify-center items-center relative">
-                    <a href="#about" aria-label="Scroll to About">
-                        <ChevronDown className="scroll-arrow w-8 h-8 text-dark" strokeWidth={1.5} />
-                    </a>
-                </div>
+                {/* Name morphing */}
+                <MorphingText
+                    texts={[t('hero.nameFirst'), t('hero.nameLast')]}
+                    className={`text-primary font-heading font-semibold ${isRu
+                        ? 'text-[3rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[7rem]'
+                        : 'text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem]'
+                    } uppercase leading-none tracking-tighter h-[1.1em] mx-auto max-w-none`}
+                />
+
+                {/* Title morphing */}
+                <MorphingText
+                    texts={[t('hero.titleLine1'), t('hero.titleLine2'), t('hero.titleLine3')]}
+                    className="text-accent font-heading font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase leading-none tracking-tighter h-[1.1em] mx-auto max-w-none"
+                />
+
+                {/* Year */}
+                <p className="font-data text-primary/40 text-xs md:text-sm font-semibold tracking-widest uppercase flex items-center gap-4 mt-4">
+                    <span className="w-8 md:w-12 h-px bg-primary/30"></span>
+                    {t('hero.year')}
+                    <span className="w-8 md:w-12 h-px bg-primary/30"></span>
+                </p>
             </div>
         </section>
     );

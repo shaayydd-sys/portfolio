@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.0",
+    "@paper-design/shaders-react": "^0.0.71",
     "clsx": "^2.1.0",
     "gsap": "^3.12.5",
     "i18next": "^25.8.18",
