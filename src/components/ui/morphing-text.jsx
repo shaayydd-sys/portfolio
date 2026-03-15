@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useId } from "react";
+import { useCallback, useEffect, useRef, useId, useMemo } from "react";
 import { cn } from "@/lib/utils";
 
 const morphTime = 1.5;
@@ -10,7 +10,7 @@ const useMorphingText = (texts) => {
   const textIndexRef = useRef(0);
   const morphRef = useRef(0);
   const cooldownRef = useRef(0);
-  const timeRef = useRef(new Date());
+  const lastTimestampRef = useRef(null); // uses RAF timestamp — more precise than Date
 
   const text1Ref = useRef(null);
   const text2Ref = useRef(null);
@@ -65,12 +65,24 @@ const useMorphingText = (texts) => {
   useEffect(() => {
     let animationFrameId;
 
-    const animate = () => {
+    // Reset on tab focus so the first resumed frame doesn't produce a huge dt
+    const handleVisibility = () => {
+      if (!document.hidden) lastTimestampRef.current = null;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    const animate = (timestamp) => {
       animationFrameId = requestAnimationFrame(animate);
 
-      const newTime = new Date();
-      const dt = Math.min((newTime.getTime() - timeRef.current.getTime()) / 1000, 0.1);
-      timeRef.current = newTime;
+      // Skip first frame after start/resume to establish baseline
+      if (lastTimestampRef.current === null) {
+        lastTimestampRef.current = timestamp;
+        return;
+      }
+
+      // Cap dt at 50ms — prevents any lag spike from skipping the morph
+      const dt = Math.min((timestamp - lastTimestampRef.current) / 1000, 0.05);
+      lastTimestampRef.current = timestamp;
 
       cooldownRef.current -= dt;
 
@@ -78,9 +90,10 @@ const useMorphingText = (texts) => {
       else doCooldown();
     };
 
-    animate();
+    animationFrameId = requestAnimationFrame(animate);
     return () => {
       cancelAnimationFrame(animationFrameId);
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
   }, [doMorph, doCooldown]);
 

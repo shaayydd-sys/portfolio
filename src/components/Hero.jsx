@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MeshGradient } from '@paper-design/shaders-react';
 import { MorphingText } from './ui/morphing-text';
@@ -5,6 +6,10 @@ import { MorphingText } from './ui/morphing-text';
 export default function Hero() {
     const { t, i18n } = useTranslation();
     const isRu = i18n.language === 'ru';
+
+    // Stable array references — prevent RAF loop restart on every re-render
+    const nameTexts = useMemo(() => [t('hero.nameFirst'), t('hero.nameLast')], [t]);
+    const titleTexts = useMemo(() => [t('hero.titleLine1'), t('hero.titleLine2'), t('hero.titleLine3')], [t]);
 
     return (
         <section className="w-full h-[100svh] min-h-[600px] relative overflow-hidden">
@@ -29,7 +34,7 @@ export default function Hero() {
 
                 {/* Name morphing */}
                 <MorphingText
-                    texts={[t('hero.nameFirst'), t('hero.nameLast')]}
+                    texts={nameTexts}
                     className={`text-primary font-heading font-semibold ${isRu
                         ? 'text-[3rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[7rem]'
                         : 'text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem]'
@@ -38,7 +43,7 @@ export default function Hero() {
 
                 {/* Title morphing */}
                 <MorphingText
-                    texts={[t('hero.titleLine1'), t('hero.titleLine2'), t('hero.titleLine3')]}
+                    texts={titleTexts}
                     className="text-accent font-heading font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase leading-none tracking-tighter h-[1.1em] mx-auto max-w-none"
                 />
 
