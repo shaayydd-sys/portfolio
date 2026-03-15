@@ -25,7 +25,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-dark/40" />
 
             {/* Content — centered */}
-            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6 text-center gap-6 md:gap-8">
+            <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center px-6 text-center ${isRu ? 'gap-3 md:gap-4' : 'gap-6 md:gap-8'}`}>
 
                 {/* Subtitle */}
                 <p className="font-heading text-primary/60 text-sm md:text-base font-medium max-w-xs leading-snug border-l-2 border-primary/20 pl-4 text-left">
