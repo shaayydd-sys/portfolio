@@ -69,7 +69,7 @@ const useMorphingText = (texts) => {
       animationFrameId = requestAnimationFrame(animate);
 
       const newTime = new Date();
-      const dt = (newTime.getTime() - timeRef.current.getTime()) / 1000;
+      const dt = Math.min((newTime.getTime() - timeRef.current.getTime()) / 1000, 0.1);
       timeRef.current = newTime;
 
       cooldownRef.current -= dt;
