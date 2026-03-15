@@ -11,7 +11,7 @@ export default function Hero() {
             {/* Shader background */}
             <MeshGradient
                 className="absolute inset-0 w-full h-full"
-                colors={['#111111', '#1c0404', '#3a0a0a', '#E63B2E']}
+                colors={['#111111', '#1a1a1a', '#2e2e2e', '#444444']}
                 speed={0.4}
                 backgroundColor="#111111"
             />
